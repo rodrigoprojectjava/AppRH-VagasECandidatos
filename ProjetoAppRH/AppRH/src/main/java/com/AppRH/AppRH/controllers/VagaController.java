@@ -92,7 +92,7 @@ public class VagaController {
 // RG DUPLICADO
 		
 		if (cr.findByRg(candidato.getRg()) != null) {
-			attributes.addFlashAttribute("mensagem erro", "RG duplicado");
+			attributes.addFlashAttribute("mensagem_erro", "RG duplicado");
 			return "redirect:/{codigo}";
 		}
 

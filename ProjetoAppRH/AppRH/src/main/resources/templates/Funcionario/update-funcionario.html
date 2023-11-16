@@ -11,8 +11,6 @@
 
 	<!-- Bootstrap -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 	<!-- HTML5 shim e Respond.js para suporte no IE8 de elementos HTML5 e media queries -->
 	<!-- ALERTA: Respond.js não funciona se você visualizar uma página file:// -->
@@ -56,101 +54,51 @@
 
 	</header>
 
+
 	<div class="container">
 
-		<h1>Informações do funcionário:</h1>
-		<div class="container" th:each="funcionario : ${funcionarios}">
+	  <th:block th:include="mensagemValidacao"></th:block>
+
+		<form method="post">
+
+			<h1>Atualizar Funcionário</h1>
 
 			<br>
 
-			<p>
-				<b>Nome:</b> <span th:text="${funcionario.nome}"></span>
-			</p>
-			<p>
-				<b>Data de nascimento:</b> <span th:text="${funcionario.data}"></span>
-			</p>
-			<p>
-				<b>E-mail:</b> <span th:text="${funcionario.email}"></span>
-			</p>
+			<div class="form-group">
+				<label for=""><b>Nome do funcionário:</b> </label> <input type="text" class="form-control" value=""
+					name="nome" required th:attr="value= ${funcionario.nome}" /> <small class="form-text text-muted"><i>* Utilize nomes e
+						termos mais utilizados no mercado.</i></small>
+			</div>
 
 
-			<br> <br>
+			<div class="row">
 
-			<h2>Cadastrar dependentes</h2>
+				<div class="col">
+					<div class="form-group">
+						<label for=""><b>Data de nascimento:</b></label> <input type="date" class="form-control"
+							value="" name="data" required th:attr="value= ${funcionario.data}"/><small class="form-text text-muted"><i>* Data de
+								nascimento.</i></small>
+					</div>
+				</div>
+				<div class="col">
 
-
-			<form method="post" th:object="${dependente}">
-
-				<div class="form-group">
-					<div class="row">
-
-						<div class="col">
-							<label for=""><b>Nome:</b> </label> <input type="text" value="" name="nome"
-								class="form-control" placeholder="Nome Completo" required />
-						</div>
-
-
-						<div class="col">
-							<label for=""><b>CPF: </b> </label><input type="text" value="" name="cpf"
-								placeholder="Somente números, sem traçõs ou pontos." class="validate form-control"
-								required />
-						</div>
-
-
-						<br> <br>
-						<div class="col">
-
-							<div class="form-group">
-								<label for=""><b>Data de nascimento:</b></label> <input type="date" value=""
-									name="dataNascimento" class="form-control" required /> <small
-									class="form-text text-muted"><i>*
-										Dia/Mês/Ano.</i></small>
-							</div>
-						</div>
-
+					<div class="form-group">
+						<label for=""><b>E-mail:</b></label><input type="text" class="form-control" value=""
+							name="email" required th:attr="value= ${funcionario.email}"/><small class="form-text text-muted"><i>* email@email.com</i></small>
 					</div>
 
+				</div>
+			</div>
 
 
 
-					<button type="submit" class="btn btn-success">Adicionar
-						Dependente</button>
-			</form>
 
-
-
-		</div>
-
-		<th:block th:include"mensagemValidacao"></th:block>
-
-		<br> <br>
-
-		<h2>Dependentes:</h2>
-
-		<br>
-
-		<table class="table table-hover table-responsive w-auto table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Nome do dependente:</th>
-					<th scope="col">CPF:</th>
-					<th scope="col">Data de nascimento:</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="dependente : ${depedentes}">
-					<td><span th.text"${depedente.nome}"></span></td>
-					<td><span th.text"${depedente.cpf}"></span></td>
-					<td><span th.text"${depedente.dataNascimento}"></span></td>
-					<td><a class="waves-effect waves-light btn-small" href="#"><button type="button"
-								class="btn btn-danger">Excluir</button></a></td>
-
-
-				</tr>
-			</tbody>
-		</table>
-
+			<button type="submit" class="btn btn-success">Atualizar
+				Funcionário</button>
+		</form>
 	</div>
+
 
 
 	<div style="height: 100px;"></div>
@@ -168,6 +116,8 @@
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 
 	</script>
+
+
 </body>
 
 </html>

@@ -61,7 +61,7 @@ public class FuncionarioController {
 	public ModelAndView dependentes(@PathVariable("id") long id) {
 		Funcionario funcionario = fr.findById(id);
 		ModelAndView mv = new ModelAndView("funcionario/dependentes");
-		mv.addObject("funcionario", funcionario);
+		mv.addObject("funcionarios", funcionario);
 
 		// LISTA DE DEPENDENTES BASEADA NO FUNCIONARIO
 		Iterable<Dependentes> dependentes = dr.findByFuncionario(funcionario);
